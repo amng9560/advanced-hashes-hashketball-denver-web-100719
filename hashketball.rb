@@ -5,7 +5,7 @@ require 'pry'
 def game_hash
   {
     away: { team_name: 'Charlotte Hornets',
-            colors: ['Turquoise', 'Purple'],
+            colors: %w[Turquoise Purple],
             players: [
               { player_name: 'Jeff Adrien',
                 number: 4,
@@ -54,7 +54,7 @@ def game_hash
                 slam_dunks: 12 }
             ] },
     home: { team_name: 'Brooklyn Nets',
-            colors: ['Black', 'White'],
+            colors: %w[Black White],
             players: [
               { player_name: 'Alan Anderson',
                 number: 0,
@@ -150,9 +150,8 @@ def big_shoe_rebounds
   rebounds = 0
   game_hash.each do |home_away, keys|
     keys[:players].each do |player|
-      size = player[:shoe]
-      if size > biggest
-        biggest = size
+      if player[:shoe] > biggest
+        biggest = player[:shoe]
         rebounds = player[:rebounds]
       end
     end
